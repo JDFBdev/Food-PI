@@ -1,0 +1,57 @@
+.container{
+  
+  position: relative;
+  flex-direction: column;
+  width: 450px;
+  height: 200px;
+  border-radius: 40px;
+  transition:  background-color 1s, transform .5s, box-shadow .5s;
+  background-color: #E6E7E8;
+}
+
+.container:hover{
+  backdrop-filter: blur(5px);
+  transform: translate(0px, -10px);
+  transition: background-color 1s, transform .5s, box-shadow .5s;
+  box-shadow: 0px 3px  rgba(34, 34, 34, .6), -2px 0px rgba(34, 34, 34, .6);
+  cursor: pointer;
+      
+}
+.info{
+  position: absolute;
+
+  margin-top: 0px;
+  margin-left: 10px;
+
+  width: 230px;
+  height: 150px;
+
+}
+
+.title{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.7rem;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: -15px;
+}
+
+
+.diets{
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.img{
+  border-radius: 30px;
+  height: 150px;
+  width: 170px;
+
+  position: absolute;
+
+  margin-top: 26px;
+  margin-left: 250px;
+}
