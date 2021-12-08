@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import postRecipe from '../actions/actions';
 import { useHistory } from "react-router-dom";
 import { useModal } from 'react-hooks-use-modal';
@@ -37,6 +37,7 @@ function Create(){
     const [input, setInput] = React.useState({title: '', summary: '', rating: null, healthScore: null, steps: '', image:''});
     const [checks, setChecks] = React.useState({});
     const [errors, setErrors] = React.useState({});
+    const [post, setPost] = React.useState({});
     const [Modal, open] = useModal('root', {
         preventScroll: true,
         closeOnOverlayClick: false
@@ -53,34 +54,40 @@ function Create(){
 
     }
 
+    useEffect(() => {
+           
+        setPost(prevPost =>({...prevPost, title: input.title, summary: input.summary, image: input.image, rating: Number(input.rating), healthScore: Number(input.healthScore), steps: input.steps}));
+    
+    }, [input]);
+
     const handleCheckChange = function(e){
 
        setChecks(prevCheck => ({...prevCheck, [e.target.name]: !prevCheck[e.target.name]}))
-       
+
     }
+
+    useEffect(() => {
+
+        let diets = Object.keys(checks).filter(function(x) {   // si el user tilda y destilda, crea la propiedad creada en false. La borramos.
+            return checks[x] !== false;
+        });
+           
+        setPost(prevPost =>({...prevPost, diets: diets}));
     
+    }, [checks]);
+   
 
     const handleSubmit = function(e){
 
         e.preventDefault();
 
-        let diets = Object.keys(checks).filter(function(x) {   // si el user tilda y destilda, crea la propiedad creada en false. La borramos.
-            return checks[x] !== false; 
-        });
-
-        diets.forEach(function(d, index, theArray){   // cambiamos los nombres de los string que tengan espacios o guiones bajos
-            if(d === 'Gluten_Free') theArray[index] = 'Gluten Free';
-            if(d === 'Lacto_Vegetarian') theArray[index] = 'Lacto-Vegetarian';
-            if(d === 'Ovo_Vegetarian') theArray[index] = 'Ovo-Vegetarian';;
-            if(d === 'Low_FODMAP') theArray[index] = 'Low FODMAP';
-            if(d === 'Dairy_Free') theArray[index] = 'Dairy Free';
-        });
-
-        let post = {title: input.title, summary: input.summary, rating: Number(input.rating), healthScore: Number(input.healthScore), steps: input.steps, diets: diets};
+        
 
         postRecipe(post);
+
+        setPost({});
         
-        history.push("/front");
+        open();
 
     }
 
@@ -116,43 +123,43 @@ function Create(){
                     <div>
                         <div >
                             <label className={s.checkA} >Gluten Free: </label>
-                            <input className={s.boxA} name="Gluten_Free" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxA} name="gluten free" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkB} >Ovo-Vegetarian: </label>
-                            <input className={s.boxB} name="Ovo_Vegetarian" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxB} name="lacto ovo vegetarian" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkC} >Primal: </label>
-                            <input className={s.boxC} name="Primal" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxC} name="primal" type="checkbox" onChange={handleCheckChange} />
                         </div>
                         <div>
                             <label className={s.checkD} >Ketogenic: </label>
-                            <input className={s.boxD} name="Ketogenic" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxD} name="ketogenic" type="checkbox" onChange={handleCheckChange} />
                         
                             <label className={s.checkE} >Vegan: </label>
-                            <input className={s.boxE} name="Vegan" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxE} name="vegan" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkF} >Dairy Free: </label>
-                            <input className={s.boxF} name="Dairy_Free" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxF} name="dairy free" type="checkbox" onChange={handleCheckChange} />
                         </div>
                         <div>
                             <label className={s.checkG} >Vegetarian: </label>
-                            <input className={s.boxG}  name="Vegetarian" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxG}  name="vegetarian" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkH} >Pescetarian: </label>
-                            <input className={s.boxH}  name="Pescetarian" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxH}  name="pescatarian" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkI} >Low FOODMAP: </label>
-                            <input className={s.boxI}  name="Low_FODMAP" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxI}  name="fodmap" type="checkbox" onChange={handleCheckChange} />
                         </div>
                         <div>
                             <label className={s.checkJ} >Lacto-Vegetarian: </label>
-                            <input className={s.boxJ}  name="Lacto_Vegetarian" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxJ}  name="lacto ovo vegetarian" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkK} >Paleo: </label>
-                            <input className={s.boxK}  name="Paleo" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxK}  name="paleo" type="checkbox" onChange={handleCheckChange} />
 
                             <label className={s.checkL} >Whole30: </label>
-                            <input className={s.boxL}  name="Whole30" type="checkbox" onChange={handleCheckChange} />
+                            <input className={s.boxL}  name="whole" type="checkbox" onChange={handleCheckChange} />
                         </div>
                     </div>
                 </form>
@@ -175,7 +182,7 @@ function Create(){
                 }
     
                 {
-                (input.title !=='' && !errors.title && !errors.summary && !errors.rating && !errors.healthScore) && <button className={s.btnCreate} onClick={open}>Create</button>
+                (input.title !=='' && !errors.title && !errors.summary && !errors.rating && !errors.healthScore) && <button className={s.btnCreate} onClick={handleSubmit}>Create</button>
                 }
             </div>
                
@@ -183,7 +190,7 @@ function Create(){
                 <Modal>
                     <div className={s.modal}>
                         <h1 className={s.modalTitle} >Recipe Created!</h1>
-                        <button className={s.modalBtn} onClick={handleSubmit}  >Ok</button>
+                        <button className={s.modalBtn} onClick={redirect}  >Ok</button>
                     </div>
                 </Modal>
             </div>

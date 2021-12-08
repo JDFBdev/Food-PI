@@ -9,10 +9,9 @@ import background from '../images/FRONT.jpg';
 
 
 function Buscador() {
- 
+  const recipes = useSelector((state)=> state.recipesLoaded);
   const [state, setState] = React.useState({title: null});
-  const [select, setSelect] = React.useState({diet: 'Diet', order: 'Result'});
-  const [ans, setAns] = React.useState({recipes: [], order: 'Result', diet: 'Diet'});
+  const [ans, setAns] = React.useState({ order: 'Result', diet: 'Diet'});
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,8 +43,6 @@ function Buscador() {
     setAns(prevInput => ({...prevInput, diet: select.target.value}))
   }
 
-  ans.recipes = useSelector((state)=> state.recipesLoaded);
-  
 
   return (
     <div style={{position: 'relative'}}>
@@ -87,7 +84,7 @@ function Buscador() {
       </div>
       
         {
-          (ans.recipes[0]) && (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
+           (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
         }  
       
     </div>

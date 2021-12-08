@@ -35,18 +35,18 @@ router.post('/', async (req,res)=>{
 
         if(!allDiets.length){
             allDiets = await Diet.bulkCreate([   // agregamos todas las dietas
-                {name: 'Gluten Free'},
-                {name: 'Ketogenic'},
-                {name: 'Vegetarian'},
-                {name: 'Lacto-Vegetarian'},
+                {name: 'gluten free'},
+                {name: 'ketogenic'},
+                {name: 'vegetarian'},
+                {name: 'lacto ovo vegetarian'},
                 {name: 'Ovo-Vegetarian'},
-                {name: 'Vegan'},
-                {name: 'Pescetarian'},
-                {name: 'Paleo'},
-                {name: 'Primal'},
-                {name: 'Dairy Free'},
-                {name: 'Low FODMAP'},
-                {name: 'Whole30'}
+                {name: 'vegan'},
+                {name: 'pescatarian'},
+                {name: 'paleo'},
+                {name: 'primal'},
+                {name: 'dairy free'},
+                {name: 'fodmap'},
+                {name: 'whole'}
             ]);
         
         }

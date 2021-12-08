@@ -3,6 +3,7 @@ var router = express.Router();
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 const API_KEY2 = process.env.API_KEY2;
+const API_KEY3 = process.env.API_KEY3;
 const axios = require('axios');
 const { Recipe, Diet } = require('../db');
 
@@ -17,7 +18,7 @@ router.get('/:idReceta', async (req,res)=>{
     if(idReceta > 0){
 
         try{
-            var recipes = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${API_KEY2}`)
+            var recipes = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${API_KEY}`)
         }catch(e){
             res.sendStatus(500).send('Problemas con el servidor de Spoonacular');
         }

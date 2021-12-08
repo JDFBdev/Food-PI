@@ -62,11 +62,12 @@ function Detalles(){
                     <div className={s.healthScore} >
                         <p style={{marginTop:'0px'}} >Healthy Score: {recipe.healthScore}</p>
                         </div>
-                </div>
+                </div >
+                <div className={s.steps} >
                     {
-                        (recipe.steps) ? (<textarea readOnly={true} className={s.steps} style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}}>{recipe.steps.replace(/<[^>]*>?/g, "")}</textarea>)
-                        : (recipe.summary && (<textarea readOnly={true} className={s.steps} style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}}>{recipe.summary.replace(/<[^>]*>?/g, "")}</textarea>))
+                        (recipe.steps) &&(<p readOnly={true}  style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}}>{recipe.steps.replace(/<[^>]*>?/g, "")}</p>)  
                     }
+                </div>
                 <div className={s.summary} >
                     {
                         (recipe.summary && recipe.steps) && (<p style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}} >{recipe.summary.replace(/<[^>]*>?/g, "")}</p>)

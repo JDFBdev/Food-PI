@@ -27,3 +27,34 @@ export default function postRecipe(postData) {
         data: postData
     })
 }
+
+export function filterAZ(data) {   
+
+    return function(dispatch) {         // store.dispatch()
+        dispatch({ type: "FILTER_AZ", payload: data });
+    };
+}
+
+export function filterZA(data) {     
+    return function(dispatch) {         // store.dispatch()
+        dispatch({ type: "FILTER_ZA", payload: data }); 
+    };
+}
+
+export function filterMAX(data) {     
+    return function(dispatch) {         // store.dispatch()
+        dispatch({ type: "FILTER_MAX", payload: data });
+    };
+}
+
+export function filterMIN(data) {     
+    return function(dispatch) {         // store.dispatch()
+        dispatch({ type: "FILTER_MIN", payload: data });
+    };
+}
+
+export function filterDiet(data) {     
+    return function(dispatch) {         // store.dispatch()
+        dispatch({ type: "FILTER_DIET", payload: data });
+    };
+}

@@ -115,28 +115,22 @@
     text-align: center;
 
     background-color: #F1F6F9;
-    width: 360px;
-    height: 130px;
+    width: 400px;
+    min-height: 155px;
     border-radius: 30px;
-    margin-top: 20px;
-    resize: none;
-    cursor:context-menu; 
-    outline:none;
+    
 }
 
-textarea::-webkit-scrollbar {
+/* textarea::-webkit-scrollbar {
     width: 12px;
     background: none;
     cursor:context-menu; 
- 
 }
   
 textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #dcdcdd; 
-
-    
-}
+} */
     
 
 .summary{
