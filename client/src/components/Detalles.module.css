@@ -113,15 +113,18 @@
     font-size: 0.9rem;
     border: none;
     text-align: center;
+    margin-top: 20px;
 
     background-color: #F1F6F9;
-    width: 400px;
-    min-height: 155px;
+    width: 360px;
+    height: 130px;
     border-radius: 30px;
+    resize: none;
+
     
 }
 
-/* textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar {
     width: 12px;
     background: none;
     cursor:context-menu; 
@@ -130,7 +133,7 @@
 textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #dcdcdd; 
-} */
+}
     
 
 .summary{
@@ -145,3 +148,10 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 30px;
 }
 
+.loader{
+    position: absolute;
+    margin-top: 13%;
+    margin-left: 46%;
+    height: 200px;
+    width: 200px;
+}

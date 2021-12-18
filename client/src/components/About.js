@@ -1,7 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import background from '../images/ABOUT.jpg';
 import s from './About.module.css';
+import git from '../images/LOGO_GITHUB.png';
+import gmail from '../images/LOGO_GMAIL.png';
+import linkedin from '../images/LOGO_LINKEDIN.png';
+
 
 const About = () => {
     let history = useHistory();
@@ -27,6 +31,11 @@ return(
             Thanks for passing by to check out my project! <br/>
             - Juan Diego Fernández Bottarini
             </h4>
+        </div>
+        <div className={s.linksdiv} >
+            <img src={linkedin} className={s.icon} onClick={() => { window.open('https://www.linkedin.com/in/jdfbdev/','_blank')}} />
+            <img src={gmail} className={s.icon} onClick={() => { window.open('mailto:JDFBdeveloper@gmail.com?','_blank')}} />
+            <img src={git} className={s.icon} onClick={() => { window.open('https://github.com/JDFBdev','_blank')}} />
         </div>
     </div>
 );

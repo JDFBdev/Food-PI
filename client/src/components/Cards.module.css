@@ -1,5 +1,6 @@
+
 .container{
-  margin-top: 0px;
+  margin-top: 15px;
   
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -9,7 +10,7 @@
 
 .btnsContainer{
   position: relative;
-  margin-top: 90px;
+  margin-top: 70px;
   text-align: center;
 }
 
@@ -39,4 +40,17 @@
   cursor: pointer;
   transition: background-color .5s;
   background-color: #b8b8b8;
+}
+
+/* fades */
+
+.MyClassEnterActive {
+  opacity: 0;
+  transform: translate(0px, 10px);
+  transition: transform .5s, opacity .4s linear;
+}
+.MyClassEnterDone {
+  opacity: 1;
+  transform: translate(0px, -10px);
+  transition: transform .5s, opacity .4s linear;
 }

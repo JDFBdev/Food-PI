@@ -15,7 +15,7 @@ router.get('/', async (req,res)=>{
 
     if (!name) return res.status(400).send({message: 'No se recibio el nombre de la receta'});
 
-    const arr = name.split(" ");      // capitalizamos las primeras letras para proligidad y mejor filtrado
+    const arr = name.split(" ");      // capitalizamos las primeras letras para prolijidad y mejor filtrado
     
     for (let i = 0; i < arr.length; i++) {
         arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);

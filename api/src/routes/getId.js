@@ -72,9 +72,11 @@ router.get('/:idReceta', async (req,res)=>{
                     res.send(result);
 
                 }
+                else res.send('No Matching Recipes');
             });
 
         }
+        else res.send('No Matching Recipes');
 
     }
 

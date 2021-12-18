@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './Card.module.css';
 import { useHistory } from 'react-router-dom';
 import defaultImage from '../images/NOIMAGE.jpg';
+
 
 export default function Card({title, image, diet, id}) {
 
@@ -12,7 +13,7 @@ export default function Card({title, image, diet, id}) {
   }
 
   const analizeDiets = function(arr){
-    let ans = '';
+
     let arr2 = arr.map(d => {
         const str1 = d.split(" ");
         for (var i = 0; i < str1.length; i++) {
@@ -23,12 +24,18 @@ export default function Card({title, image, diet, id}) {
 
     return (<p>{arr2.join(' - ')}</p>)
     
-  }
+  } 
+
+  useEffect(() => {
+    
+  }, [title]);
 
   return (
     <div onClick={details} className={s.container}>
       <div className={s.info} >
-        <p className={s.title} >{title}</p>
+        {
+          (title) && (<p className={s.title} >{title}</p>)
+        }
         {
           (diet[0]) && (<p className={s.diets} >{analizeDiets(diet)}</p>)
         }

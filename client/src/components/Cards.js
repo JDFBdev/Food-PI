@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import s from './Cards.module.css';
 import { filterAZ, filterMIN, filterMAX, filterZA, filterDiet } from '../actions/actions';
+import { CSSTransition } from 'react-transition-group';
 
 export default function Cards({props}) {
   const recipes = useSelector((state) => state.recipesLoaded);
   const [render, setRender] = React.useState([]);
   const [pages, setPages] = React.useState(Math.ceil(recipes.length/8));    // cantidad inicial de paginas que necesito
   const [buttons, setButtons] = React.useState([]);   // cantidad de botones que voy a usar, hechos en array con su valor
+  const [inProp, setInProp] = useState(true); // CSS transition group
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -21,11 +23,13 @@ export default function Cards({props}) {
 
 
   useEffect(() => {
+  
     setPages(prevPages=>(Math.ceil(recipes.length/8)))
   }, [recipes, props.order, props.diet, dispatch]);   // actualiza la cantidad de paginas necesarias cuando cambie la primera receta que llega
   
 
   useEffect(() => {
+
     setButtons([]);
     for(let i = 0; i < pages; i++){
       setButtons(prevButtons=>([...prevButtons, i+1]));
@@ -39,7 +43,7 @@ export default function Cards({props}) {
       if(recipes[i]) setRender(prevRender=>([...prevRender, recipes[i]]));   // seteamos las primeras recetas como render incial
     }
 
-  }, [recipes[0], props.order, props.diet, dispatch]);   // actualizame las recetas a renderizar una vez que se actualicen los botones O las nuevas recetas
+  }, [recipes, props.order, props.diet, dispatch]);   // actualizame las recetas a renderizar una vez que se actualicen los botones O las nuevas recetas
 
 
   const handlePageButton = function(page){
@@ -54,12 +58,24 @@ export default function Cards({props}) {
     }
   }
 
-  console.log(recipes);
+console.log(render);
   return (
-    <div>
+    <div className={s.whole} >
       <div className={s.container}>{
-        render.map(r => (
-            <Card title={r.title} image={r.image} diet={r.diet} id={r.id}/>
+        render.map((r,index) => (
+          <CSSTransition
+            in={inProp}
+            timeout={index*50}
+            appear={true}
+            key={r.id}
+            classNames={{
+              appear: s.MyClassEnterActive,
+              enterDone: s.MyClassEnterDone,
+              exitActive: s.MyClassExit,
+              exitDone: s.MyClassExitActive
+            }}>
+              <Card key={String(r.title)} title={r.title} image={r.image} diet={r.diet} id={r.id}/>
+          </CSSTransition>
         ))
         }
       </div>

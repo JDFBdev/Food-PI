@@ -4,12 +4,12 @@ import Cards from './Cards';
 import s from './Buscador.module.css';
 import { getRecipes } from '../actions/actions';
 import { useHistory } from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import background from '../images/FRONT.jpg';
-
+import ReactTooltip from 'react-tooltip';
 
 function Buscador() {
-  const recipes = useSelector((state)=> state.recipesLoaded);
+
   const [state, setState] = React.useState({title: null});
   const [ans, setAns] = React.useState({ order: 'Result', diet: 'Diet'});
 
@@ -48,7 +48,14 @@ function Buscador() {
     <div style={{position: 'relative'}}>
       <div style={{position: 'absolute', backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: 'cover',  width: '100vw', height: '100vh'}}/>
       <div className={s.finder}>
-        <h2 className={s.title}>Finder</h2>
+        <div className={s.header}>
+          <h2 className={s.title}>Finder</h2>
+          <div className={s.info} data-tip data-for='tooltip' >?</div>
+          <ReactTooltip id='tooltip' place='right' effect="solid" >
+            Use the finder to search through thousands <br/>
+            of recipes and even the ones you've created!
+          </ReactTooltip>
+        </div>
         <form>   {/* hacemos un form que llama a handle submit ante cada cambio para setear lo que se escribe en title */}
           <input type='text' name='title' value={state.title} className={s.input} onChange={handleChange} />
           <button onClick={handleSubmit} className={s.btnSubmit} >Search</button>
@@ -82,11 +89,9 @@ function Buscador() {
           </div>
         </div>
       </div>
-      
         {
            (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
-        }  
-      
+        }
     </div>
   );
   

@@ -46,10 +46,16 @@ const initialState = {
       };
     }
     if (action.type === "FILTER_DIET") {
-      const recipes = state.recipesAux.filter(r=>{ return r.diet.includes(action.payload); })
+      const recipes = state.recipesAux.filter(r=>{ return r.diet.includes(action.payload); }) // auix siempre es un estado completo, recipes es un nuevo estado filtrado a partir de uno completo
       return {
         ...state,
         recipesLoaded: recipes
+      };
+    }
+    if (action.type === "CLEAR_DETAIL") {
+      return {
+        ...state,
+        recipeDetail: {}
       };
     }
     return state;
