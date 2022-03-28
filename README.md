@@ -2,6 +2,26 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
+# Summary
+
+Hello there! Thanks for passing by to check out my project. On this occation i was given the task of creating a SPA App that consumes data form the Spoonacuar restfull API. It allows the user to browse through thousands of recipes and create their owns. This is the individual project required for the Henry Fullstack Bootcamp.
+
+- I used React for the Front End and Redux as state management. All components were developed with pure CSS, with React Transition Group as an add on.
+- The SPA consumes data from the Spoonacular API through a backend developed in Node JS, using Express.
+- For the database I used PostgreSQL and Sequelize as ORM.
+- The project includes functionalities such as sorting, filtering, pagination, a search input, cards to see details from the selected recipe, and allows to create a recipe through a controlled form.
+- The style sketches were made in corelDraw and then used as reference.
+- Presentation video on <a href="https://www.linkedin.com/in/JDFBdev" >linkedin!</a>
+
+# Instructions
+
+- NPM install over the /api folder. This is where all the backend is developed.
+- NPM install over the /client folder. This is where all the frontend is developed.
+- NPM start over the /api folder. This initializes the connection with the database, loads it, and allows communication with the restful API.
+- NPM start over the /client folder. This will open the App on your default browser.
+
+# Original task instructions provided by Henry:
+
 # Individual Project - Henry Food
 
 <p align="right">
