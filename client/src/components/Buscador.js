@@ -5,7 +5,7 @@ import s from './Buscador.module.css';
 import { getRecipes } from '../actions/actions';
 import { useHistory } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
-import background from '../images/FRONT.jpg';
+import background from '../images/FRONT2.jpg';
 import ReactTooltip from 'react-tooltip';
 
 function Buscador() {
@@ -45,8 +45,7 @@ function Buscador() {
 
 
   return (
-    <div style={{position: 'relative'}}>
-      <div style={{position: 'absolute', backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: 'cover',  width: '100vw', height: '100vh'}}/>
+    <div style={{backgroundImage: `url(${background})`}} className={s.container}>
       <div className={s.finder}>
         <div className={s.header}>
           <h2 className={s.title}>Finder</h2>
@@ -56,11 +55,11 @@ function Buscador() {
             of recipes and even the ones you've created!
           </ReactTooltip>
         </div>
-        <form>   {/* hacemos un form que llama a handle submit ante cada cambio para setear lo que se escribe en title */}
+        <form className={s.form} >   {/* hacemos un form que llama a handle submit ante cada cambio para setear lo que se escribe en title */}
           <input type='text' name='title' value={state.title} className={s.input} onChange={handleChange} />
-          <button onClick={handleSubmit} className={s.btnSubmit} >Search</button>
+          <button onClick={handleSubmit} className={s.btnSubmit} type='submit' >Search</button>
         </form>
-        <div>
+        <div className={s.selectors} >
           <select className={s.selectorA} onChange={handleSelectorA}>
             <option value="NAME_ASC">A-Z</option>
             <option value="NAME_DES">Z-A</option>
@@ -83,15 +82,15 @@ function Buscador() {
             <option value="whole">Whole30</option>
             <option selected value={null} >Diet</option>
           </select>
-          <div>
+          </div>
+          <div className={s.btns} >
             <button onClick={create} className={s.btnCreate} >Create Recipe</button>
             <button onClick={about}className={s.btnAbout} >About</button>
           </div>
-        </div>
       </div>
-        {
-           (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
-        }
+      {
+          (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
+      }
     </div>
   );
   

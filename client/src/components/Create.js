@@ -81,8 +81,6 @@ function Create(){
 
         e.preventDefault();
 
-        
-
         postRecipe(post);
 
         setPost({});
