@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import s from './Cards.module.css';
@@ -10,7 +10,6 @@ export default function Cards({props}) {
   const [render, setRender] = React.useState([]);
   const [pages, setPages] = React.useState(Math.ceil(recipes.length/8));    // cantidad inicial de paginas que necesito
   const [buttons, setButtons] = React.useState([]);   // cantidad de botones que voy a usar, hechos en array con su valor
-  const [inProp, setInProp] = useState(true); // CSS transition group
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -19,7 +18,7 @@ export default function Cards({props}) {
     if (props.order === 'NAME_DES') dispatch(filterZA());
     if (props.order === 'RATING_ASC') dispatch(filterMAX());
     if (props.order === 'RATING_DES') dispatch(filterMIN());
-  }, [props]);
+  }, [props, dispatch]);
 
 
   useEffect(() => {
@@ -61,10 +60,11 @@ export default function Cards({props}) {
 console.log(render);
   return (
     <div className={s.whole} >
-      <div className={s.container}>{
+      <div className={s.container}>
+        {
         render.map((r,index) => (
           <CSSTransition
-            in={inProp}
+            in={true}
             timeout={index*50}
             appear={true}
             key={r.id}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import background from '../images/ABOUT.jpg';
 import s from './About.module.css';
 import git from '../images/LOGO_GITHUB.png';
@@ -33,9 +33,9 @@ return(
             </h4>
         </div>
         <div className={s.linksdiv} >
-            <img src={linkedin} className={s.icon} onClick={() => { window.open('https://www.linkedin.com/in/jdfbdev/','_blank')}} />
-            <img src={gmail} className={s.icon} onClick={() => { window.open('mailto:JDFBdeveloper@gmail.com?','_blank')}} />
-            <img src={git} className={s.icon} onClick={() => { window.open('https://github.com/JDFBdev','_blank')}} />
+            <img alt='linkedin icon' src={linkedin} className={s.icon} onClick={() => { window.open('https://www.linkedin.com/in/jdfbdev/','_blank')}} />
+            <img alt='gmail icon' src={gmail} className={s.icon} onClick={() => { window.open('mailto:JDFBdeveloper@gmail.com?','_blank')}} />
+            <img alt='github icon' src={git} className={s.icon} onClick={() => { window.open('https://github.com/JDFBdev','_blank')}} />
         </div>
     </div>
 );

@@ -3,6 +3,7 @@
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .finder{
@@ -73,8 +74,8 @@
     height: 2.2rem;
     border-radius: .8rem;
     width: 75%;
-
-    
+    padding-left: 10px;
+    outline: none;
 }
 
 .btnSubmit{
@@ -149,13 +150,6 @@
     cursor: pointer;
     background-color: #d5d8da;
     transition: background-color .5s;
-}
-
-.cardsContainer{
-    position: absolute;
-    margin-top: 15%;
-    margin-left: 30px;
-    width: 98%;
 }
 
 @media (max-width: 800px) {

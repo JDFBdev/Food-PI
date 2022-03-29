@@ -50,7 +50,7 @@ function Detalles(){
         <div style={{position:'relative'}}>
             <div style={{position: 'absolute', backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: 'cover',  width: '100vw', height: '100vh'}}/>
             <button to='/front' onClick={leave} className={s.btn} >Back to Home Page</button>
-            { (!recipe.title) ? (<div> <img className={s.loader} src={loader} /></div>) : (
+            { (!recipe.title) ? (<div> <img alt='loading' className={s.loader} src={loader} /></div>) : (
             <div className={s.container} >
                 <h2 className={s.title}  >{recipe.title}</h2>
                 {

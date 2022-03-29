@@ -8,6 +8,7 @@
   transition: transform .5s, box-shadow .5s;
   background-color: #E6E7E8;
   opacity: inherit;
+  overflow: hidden;
 }
 
 .container:hover{
