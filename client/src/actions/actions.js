@@ -1,12 +1,11 @@
 const axios = require('axios');
 
-export function getRecipes(titulo) {
-    return function(dispatch) {
-        return fetch(`http://localhost:3001/recipes?name=${titulo}`)
-        .then(response => response.json())
-        .then(json => {
-        dispatch({ type: "GET_RECIPES", payload: json });
-        });
+export function getRecipes(titulo) {     
+    return async function(dispatch) {         // store.dispatch()
+        let promise = await axios.get(`http://localhost:3001/recipes?name=${titulo}`)
+        let response = promise.data;
+        dispatch({ type: "GET_RECIPES", payload: response
+    });
     };
 }
 

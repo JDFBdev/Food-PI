@@ -213,7 +213,7 @@ function Create(){
                 <div>
                     <Modal>
                         <div className={s.modal}>
-                            <h1 className={s.modalTitle} >Recipe Created!</h1>
+                            <h1 className={s.modalTitle} >Recipe <br/> Created!</h1>
                             <button className={s.modalBtn} onClick={redirect}  >Ok</button>
                         </div>
                     </Modal>

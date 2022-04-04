@@ -57,7 +57,6 @@ export default function Cards({props}) {
     }
   }
 
-console.log(render);
   return (
     <div className={s.whole} >
       <div className={s.container}>

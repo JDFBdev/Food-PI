@@ -20,7 +20,7 @@ function Buscador() {
     setState(prevInput => ({title: e.target.value}));
   }
   
-  const handleSubmit = function(e) {   
+  const handleSubmit = async function(e) {
     e.preventDefault();
     if(state.title && !/^\s*$/.test(state.title)){
       dispatch(getRecipes(state.title));
@@ -89,7 +89,7 @@ function Buscador() {
           </div>
       </div>
       {
-          (<div className = {s.cardsContainer}> <Cards props = {ans} /> </div>)
+          (<div className={s.cardsContainer}> <Cards props = {ans} /> </div>)
       }
     </div>
   );
