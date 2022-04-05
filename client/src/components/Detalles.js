@@ -37,26 +37,20 @@ function Detalles(){
                 return str1.join(' ');
             });
 
-            return (<p>{arr2.join(' - ')}</p>)
+            return (<p style={{margin: 0}}>{arr2.join(' - ')}</p>)
 
-        }  else return (<p>No Matching Diets</p>)
+        }  else return (<p style={{margin: 0}} >No Matching Diets</p>)
         
     }
 
     const recipe = useSelector((state)=> state.recipeDetail); // subscripcion al store
-    console.log(recipe);
 
     return (
-        <div style={{position:'relative'}}>
-            <div style={{position: 'absolute', backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: 'cover',  width: '100vw', height: '100vh'}}/>
+        <div style={{backgroundImage: `url(${background})`}} className={s.background}>
             <button to='/front' onClick={leave} className={s.btn} >Back to Home Page</button>
             { (!recipe.title) ? (<div> <img alt='loading' className={s.loader} src={loader} /></div>) : (
             <div className={s.container} >
                 <h2 className={s.title}  >{recipe.title}</h2>
-                {
-                    (recipe.image) ? (<img src={recipe.image} className={s.img} alt={recipe.title}/>) : (<img src={defaultImage} className={s.img} alt='Default'/>)
-                }
-                
                 <div className={s.diet} >
                     {
                         (recipe.diet) && analizeDiets(recipe.diet)
@@ -70,11 +64,13 @@ function Detalles(){
                         <p style={{marginTop:'0px'}} >Healthy Score: {recipe.healthScore}</p>
                         </div>
                 </div >
-                <div  >
-                    {
-                        (recipe.steps) &&(<textarea readOnly={true} className={s.steps}  style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}}>{recipe.steps.replace(/<[^>]*>?/g, "")}</textarea>)  
-                    }
-                </div>
+                {
+                (recipe.image) ? (<img src={recipe.image} className={s.img} alt={recipe.title}/>) : (<img src={defaultImage} className={s.img} alt='Default'/>)
+                }
+
+                {
+                    (recipe.steps) &&(<div readOnly={true} className={s.steps}>{recipe.steps.replace(/<[^>]*>?/g, "")}</div>)  
+                }
                 <div className={s.summary} >
                     {
                         (recipe.summary ) && (<p style={{paddingTop:'10px', paddingLeft: '20px', paddingRight: '20px', paddingBottom:'10px'}} >{recipe.summary.replace(/<[^>]*>?/g, "")}</p>)

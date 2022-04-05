@@ -18,7 +18,7 @@ router.get('/:idReceta', async (req,res)=>{
     if(idReceta > 0){
 
         try{
-            var recipes = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${API_KEY}`)
+            var recipes = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${API_KEY2}`)
         }catch(e){
             res.sendStatus(500).send('Problemas con el servidor de Spoonacular');
         }

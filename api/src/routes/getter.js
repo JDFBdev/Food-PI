@@ -7,7 +7,7 @@ const API_KEY3 = process.env.API_KEY3;
 const axios = require('axios');
 const { Recipe, Diet } = require('../db');
 
-const fetchAmount = 100;
+const fetchAmount = 64;
 
 router.get('/', async (req,res)=>{
 
@@ -24,7 +24,7 @@ router.get('/', async (req,res)=>{
     
 
     try{
-        var recipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=${fetchAmount}&addRecipeInformation=true`)
+        var recipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&query=${name}&number=${fetchAmount}&addRecipeInformation=true`)
     }catch(e){
         res.sendStatus(500).send('Problemas con el servidor de Spoonacular');
     }

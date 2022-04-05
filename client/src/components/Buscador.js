@@ -10,7 +10,7 @@ import ReactTooltip from 'react-tooltip';
 
 function Buscador() {
 
-  const [state, setState] = React.useState({title: null});
+  const [state, setState] = React.useState({title: ''});
   const [ans, setAns] = React.useState({ order: 'Result', diet: 'Diet'});
 
   const dispatch = useDispatch();
