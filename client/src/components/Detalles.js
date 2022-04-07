@@ -69,7 +69,7 @@ function Detalles(){
                 }
 
                 {
-                    (recipe.steps) &&(<div readOnly={true} className={s.steps}>{recipe.steps.replace(/<[^>]*>?/g, "")}</div>)  
+                    (recipe.steps) &&(<p className={s.steps}>{recipe.steps.replace(/<[^>]*>?/g, "")}</p>)  
                 }
                 <div className={s.summary} >
                     {
