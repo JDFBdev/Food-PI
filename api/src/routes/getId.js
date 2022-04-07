@@ -13,7 +13,7 @@ router.get('/:idReceta', async (req,res)=>{
 
     let { idReceta } = req.params;
     
-    if (!idReceta) return res.status(400).send({message: 'No se recibio el id de la receta'});
+    if (!idReceta) res.status(400).send({message: 'No se recibio el id de la receta'});
 
     if(idReceta > 0){
 
@@ -40,7 +40,7 @@ router.get('/:idReceta', async (req,res)=>{
     else if (idReceta === 0){
         res.send('Receta inexistente en id 0');
     }
-    else{
+    else if(idReceta<0){
 
         idReceta = Math.abs(idReceta);   // si es negativa, es un id de la DB, asi que lo hacemos positivo para buscarlo
         
@@ -71,14 +71,16 @@ router.get('/:idReceta', async (req,res)=>{
             
                     res.send(result);
 
-                }
-                else res.send('No Matching Recipes');
+                } 
             });
 
         }
+
         else res.send('No Matching Recipes');
 
     }
+
+    return;
 
 
 });

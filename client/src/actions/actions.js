@@ -2,7 +2,7 @@ const axios = require('axios');
 
 export function getRecipes(titulo) {     
     return async function(dispatch) {         // store.dispatch()
-        let promise = await axios.get(`http://localhost:3001/recipes?name=${titulo}`)
+        let promise = await axios.get(`https://backendpifood.herokuapp.com/recipes?name=${titulo}`)
         let response = promise.data;
         dispatch({ type: "GET_RECIPES", payload: response
     });
@@ -21,7 +21,7 @@ export function getRecipes(titulo) {
 
 export function getRecipeDetail(idRecipe) {     
     return async function(dispatch) {         // store.dispatch()
-        let promise = await axios.get(`http://localhost:3001/recipes/${idRecipe}`)
+        let promise = await axios.get(`https://backendpifood.herokuapp.com/recipes/${idRecipe}`)
         let response = promise.data;
         dispatch({ type: "GET_RECIPE_DETAILS", payload: response });
     };
@@ -29,7 +29,7 @@ export function getRecipeDetail(idRecipe) {
 
 export default function postRecipe(postData) {
     axios({
-        url: 'http://localhost:3001/recipe',
+        url: 'https://backendpifood.herokuapp.com/recipe',
         method: 'post',
         data: postData
     })

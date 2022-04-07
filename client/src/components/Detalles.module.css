@@ -147,13 +147,15 @@
 
 }
 
-textarea::-webkit-scrollbar {
+div::-webkit-scrollbar,
+p::-webkit-scrollbar {
     width: 12px;
     background: none;
     cursor:context-menu; 
 }
   
-textarea::-webkit-scrollbar-thumb {
+div::-webkit-scrollbar-thumb,
+p::-webkit-scrollbar-thumb{
     border-radius: 10px;
     background-color: #dcdcdd; 
 }
