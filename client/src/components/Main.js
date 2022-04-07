@@ -14,7 +14,7 @@ const Main = () => {
 return(
     <div style={{backgroundImage: `url(${background})`}} className={s.container} >
         <div className={s.div} > 
-            <h1 className={s.h1}>Food Project</h1>
+            <h1 className={s.h1}>Meal Swipe</h1>
             <button onClick={go} className={s.btn} >Go!</button>
         </div>
     </div>
